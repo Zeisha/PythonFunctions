@@ -7,11 +7,11 @@ def decorator1(func):
         print("After calling " + func.__name__)
     return wrapper
 
-
+@decorator1
 def call_name(name):
     print("The name is " + name)
 
-call_name = decorator1(call_name)
+#call_name = decorator1(call_name)
 
 call_name("Poonam")
 
@@ -35,3 +35,19 @@ for num in sum1(10):
 
 
 print("EXAMPLE OF CONTEXT MANAGER")
+
+
+class ContextManager():
+    def __init__(self):
+        print('initialisation')
+
+    def __enter__(self):
+        print('method enter')
+        return self
+
+    def __exit__(self, type1 , value, traceback):
+        print('method exit')
+
+
+with ContextManager() as manager:
+    print('call of with statement')
